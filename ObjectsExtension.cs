@@ -20,5 +20,10 @@ namespace SharpExtension
 
         public static Task<TResult> GetAsync<T, TResult>(this T obj, Func<T, Task<TResult>> functor)
             => functor(obj);
+
+        public static TResult Cast<TResult>(this object source)
+        {
+            return source is TResult result ? result : (TResult) source;
+        }
     }
 }
