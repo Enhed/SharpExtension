@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SharpExtension</PackageId>
-    <Version>1.1.5</Version>
+    <Version>1.3.2</Version>
     <Authors>Enhed</Authors>
   </PropertyGroup>
 
