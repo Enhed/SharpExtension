@@ -12,6 +12,11 @@ namespace SharpExtension
             return DateTime.Now - time;
         }
 
+        public static TimeSpan FromNow(this DateTime time)
+        {
+            return time - DateTime.Now;
+        }
+
         public static bool Greater(this DateTime time, DateTime greatCheck)
         {
             return time > greatCheck;
