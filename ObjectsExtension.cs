@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using SharpExtension.For;
 
 namespace SharpExtension
 {
     public static class ObjectsExtension
     {
-        public static T Do<T>(this T obj, Action<T> action){
+        public static T Do<T>(this T obj, Action<T> action)
+        {
             action(obj);
             return obj;
         }
@@ -24,6 +27,16 @@ namespace SharpExtension
         public static TResult Cast<TResult>(this object source)
         {
             return source is TResult result ? result : (TResult) source;
+        }
+
+        public static TValue[] Repeat<TValue>(this TValue target, int count)
+        {
+            return count.ForGet(x => target).ToArray();
+        }
+
+        public static string CreateString<TValue>(this TValue[] array, string separator = null)
+        {
+            return array.Select(v => v.ToString()).Join(separator);
         }
     }
 }
