@@ -74,4 +74,19 @@ namespace SharpExtension.For
             return (0, source.end, source.obj).ForGet(func, includeEnd);
         }
     }
+
+    public static class TupleExtension
+    {
+        private static readonly Random random = new Random();
+
+        public static (int result, Random target) Random( this ( int min, int max ) range )
+        {
+            return (random.Next(range.min, range.max), random);
+        }
+
+        public static (int result, Random target) Random( this int max )
+        {
+            return (random.Next(max), random);
+        }
+    }
 }
