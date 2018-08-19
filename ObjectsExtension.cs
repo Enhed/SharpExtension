@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SharpExtension.For;
@@ -34,7 +35,7 @@ namespace SharpExtension
             return count.ForGet(x => target).ToArray();
         }
 
-        public static string CreateString<TValue>(this TValue[] array, string separator = null)
+        public static string CreateString<TValue>(this IEnumerable<TValue> array, string separator = null)
         {
             return array.Select(v => v.ToString()).Join(separator);
         }
