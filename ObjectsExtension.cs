@@ -37,8 +37,7 @@ namespace SharpExtension
 
         public static string CreateString<TValue>(this IEnumerable<TValue> array, string separator = null)
         {
-            if(array == null) return string.Empty;
-            return array.Select(v => v.ToString()).Join(separator);
+            return array?.Select(v => v.ToString()).Join(separator);
         }
     }
 }
