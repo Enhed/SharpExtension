@@ -18,6 +18,19 @@ namespace SharpExtension.Try
             }
         }
 
+        public static TResult Try<T, TResult>(this T obj,
+            Func<T, TResult> functor,
+            TResult defaultResult = default(TResult),
+            Action<T, Exception> onExn = null){
+            try{
+                return functor(obj);
+            }
+            catch(Exception exn){
+                onExn?.Invoke(obj, exn);
+                return defaultResult;
+            }
+        }
+
         public static T Try<T>(this T obj, Action<T> action,
             Action<Exception> onExn = null){
             try{
@@ -25,6 +38,18 @@ namespace SharpExtension.Try
             }
             catch(Exception exn){
                 onExn?.Invoke(exn);
+            }
+
+            return obj;
+        }
+
+        public static T Try<T>(this T obj, Action<T> action,
+            Action<T, Exception> onExn = null){
+            try{
+                action(obj);
+            }
+            catch(Exception exn){
+                onExn?.Invoke(obj, exn);
             }
 
             return obj;

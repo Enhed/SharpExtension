@@ -27,6 +27,16 @@ namespace SharpExtension.Generic
             return enumerable;
         }
 
+        public static IEnumerable<T> TryEach<T>(this IEnumerable<T> enumerable, Action<T> action,
+            Action<T, Exception> onExn = null){
+
+            foreach(var item in enumerable){
+                item.Try(action, onExn);
+            }
+
+            return enumerable;
+        }
+
         public static TEnumerable Each<TEnumerable, T>(this TEnumerable enumerable, Action<T> action)
             where TEnumerable : IEnumerable<T>
         {
